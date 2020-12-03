@@ -40,7 +40,7 @@ jobs:
       - name: npm install
         if: env.QQ_READ_HEADER_VAL && env.QQ_READ_TIME_URL_VAL && env.QQ_READ_TIME_HEADER_VAL
         run: |
-          cd ~/jd_scripts
+          cd ~/jd_scripts_mirror
           git checkout master
           npm install
       - name: '运行 【企鹅读书】'
