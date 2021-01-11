@@ -10,7 +10,7 @@ on:
   watch:
     types: [started]
   repository_dispatch:
-    types: live
+    types: crazy_joy_coin
 jobs:
   build:
 
