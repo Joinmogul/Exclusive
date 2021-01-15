@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone  https://github.com/Joinmogul/jd_scripts_mirror.git ~/jd_scripts_mirror
+          git clone https://github.com/Joinmogul/jd_scripts_mirror.git ~/jd_scripts_mirror
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:

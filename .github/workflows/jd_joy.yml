@@ -1,16 +1,25 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
 name: jd_joy
+
 on:
   workflow_dispatch:
   schedule:
     - cron: '0 0,1,4,10,15,16 * * *'
+  watch:
+    types: started
+  repository_dispatch:
+    types: joy
 jobs:
   build:
+
     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          repository: Joinmogul/jd_scripts_mirror
+        run: |
+          git clone https://github.com/Joinmogul/jd_scripts_mirror.git ~/jd_scripts_mirror
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -24,15 +33,18 @@ jobs:
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
       - name: npm install
         run: |
+          cd ~/jd_scripts_mirror
           npm install
       - name: '运行 【宠汪汪】'
         run: |
+          cd ~/jd_scripts_mirror
           node jd_joy.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           JOY_FEED_COUNT: ${{ secrets.JOY_FEED_COUNT }}
           JOY_RUN_FLAG: ${{ secrets.JOY_RUN_FLAG }}
+          JOY_TEAM_LEVEL: ${{ secrets.JOY_TEAM_LEVEL }} #参加多少人的赛跑比赛，可选[2,10,50]
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           BARK_SOUND: ${{ secrets.BARK_SOUND }}

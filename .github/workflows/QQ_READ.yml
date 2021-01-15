@@ -23,7 +23,7 @@ jobs:
       - name: Checkout
         if: env.QQ_READ_HEADER_VAL && env.QQ_READ_TIME_URL_VAL && env.QQ_READ_TIME_HEADER_VAL
         run: |
-          git clone https://github.com/Joinmogul/jd_scripts_mirror.git ~/jd_scripts_mirror
+          git clone https://github.com/Joinmogul/ jd_scripts_mirror.git ~/ jd_scripts_mirror
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         if: env.QQ_READ_HEADER_VAL && env.QQ_READ_TIME_URL_VAL && env.QQ_READ_TIME_HEADER_VAL
@@ -40,13 +40,13 @@ jobs:
       - name: npm install
         if: env.QQ_READ_HEADER_VAL && env.QQ_READ_TIME_URL_VAL && env.QQ_READ_TIME_HEADER_VAL
         run: |
-          cd ~/jd_scripts_mirror
+          cd ~/ jd_scripts_mirror
           git checkout master
           npm install
       - name: '运行 【企鹅读书】'
         if: env.QQ_READ_HEADER_VAL && env.QQ_READ_TIME_URL_VAL && env.QQ_READ_TIME_HEADER_VAL
         run: |
-          cd ~/jd_scripts_mirror/backUp
+          cd ~/ jd_scripts_mirror/backUp
           node qqread.js
         env:
           QQ_READ_HEADER_VAL: ${{ secrets.QQ_READ_HEADER_VAL }}

@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone  https://github.com/Joinmogul/jd_scripts_mirror.git ~/jd_scripts_mirror
+          git clone https://github.com/Joinmogul/jd_scripts_mirror.git ~/jd_scripts_mirror
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -35,7 +35,7 @@ jobs:
         run: |
           cd ~/jd_scripts_mirror
           npm install
-      - name: '运行 【京东手机偶像力量】
+      - name: '运行 【京东手机偶像力量】'
         run: |
           cd ~/jd_scripts_mirror
           node jd_pubg.js
