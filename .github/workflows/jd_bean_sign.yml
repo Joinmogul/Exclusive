@@ -3,6 +3,10 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 16,12 * * *'
+  watch:
+    types: started
+  repository_dispatch:
+    types: bean_sgin
 jobs:
   build:
     runs-on: ubuntu-latest
