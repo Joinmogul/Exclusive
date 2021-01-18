@@ -35,7 +35,7 @@ jobs:
         run: |
           cd ~/jd_scripts_mirror
           npm install
-      - name: '运行 【京豆炸年兽】'
+      - name: '运行 【京东炸年兽】'
         run: |
           cd ~/jd_scripts_mirror
           node jd_nian.js
