@@ -6,7 +6,7 @@ name: jd_fanslove
 on:
   workflow_dispatch:
   schedule:
-    - cron: '5 4,10,17 * * *'
+    - cron: '5 2 * * *'
   watch:
     types: [started]
   repository_dispatch:
